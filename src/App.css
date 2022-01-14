@@ -1,38 +1,175 @@
-.App {
+html{
+  font-size: 14px;
+}
+
+body{
+  width: 100%;
+  height: 100vh;
+  padding-top: 100px;
+  background: linear-gradient(to bottom, #fff 0%, #000 100%) center no-repeat;
+  background-size: cover;
+}
+
+h1{
+  
   text-align: center;
+  color: grey;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button{
+  border: 0;
+  background: rgba(128, 128, 128, 0.767);
+  transition: all 0.2s linear;
+  color: rgba(37, 35, 35, 0.76);
+  font-weight: bold;
+}
+button:hover{
+  background-color:rgba(128, 128, 128, 0.938);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.todo-container {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.todo-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
 }
 
-.App-link {
-  color: #61dafb;
+
+
+
+.todo-item{
+  display: flex;
+  justify-content: space-between;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.actions-btn button{
+  margin-left: 10px;
+}
+
+.actions-btn span{
+  color: rgba(37, 35, 35, 0.76);
+  font-weight: bold;
+  transition: all  0.2s linear;
+}
+
+.actions-btn span:hover{
+color: #000;
+}
+
+.btn-container{
+  display: flex;
+}
+.btn-container button{
+  width: calc(100% /3);
+  border-right: 1px solid rgba(37, 35, 35, 0.76);;
+  border-top: 1px solid  rgba(37, 35, 35, 0.76);;
+}
+
+.btn-container button:last-child{
+  border-right:0;
+}
+
+.input-field {
+  display: flex;
+  height: 25px;
+  
+}
+
+.input-field input{
+
+  border: 0;
+  outline: none;
+  font-size: 14px;
+  color: rgba(66, 65, 65, 0.678);
+  width: 75%;
+}
+
+.input-field input[placeholder]{
+  font-size: 14px;
+}
+
+.input-field button{
+  width: 25%;
+
+}
+
+.todo-content-inner{
+  width: 350px;
+}
+
+
+.todo-naviagtion{
+  margin-bottom: 10px;
+}
+
+.todo-item div label{
+  color: rgba(66, 66, 66, 0.842);
+  font-weight: bold;
+}
+
+
+.footer{
+  font-weight: bold;
+  color: rgba(66, 66, 66, 0.842);;
+}
+
+
+/* !checkbox */
+.custom-checkbox {
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.custom-checkbox+label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+.custom-checkbox+label::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid #686e74;
+  border-radius: 0.25em;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+.custom-checkbox:checked+label::before {
+  border-color: #646b72;
+  background-color: #646b72;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+}
+.custom-checkbox:not(:disabled):not(:checked)+label:hover::before {
+  border-color: #c7ccd1;
+}
+/* стили для активного состояния чекбокса (при нажатии на него) */
+.custom-checkbox:not(:disabled):active+label::before {
+  background-color: #c7ccd1;
+  border-color: #c7ccd1;
+}
+/* стили для чекбокса, находящегося в фокусе */
+.custom-checkbox:focus+label::before {
+  box-shadow: 0 0 0 0.2rem rgba(67, 71, 75, 0.25);
+}
+/* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
+.custom-checkbox:focus:not(:checked)+label::before {
+  border-color: #a4aab1;
+}
+/* стили для чекбокса, находящегося в состоянии disabled */
+.custom-checkbox:disabled+label::before {
+  background-color: #e9ecef;
 }
