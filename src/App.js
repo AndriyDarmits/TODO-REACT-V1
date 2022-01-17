@@ -31,6 +31,7 @@ export default class App extends React.Component {
     this.onDeleteItemChanged = this.onDeleteItemChanged.bind(this)
     this.onCompleteAllItemChanged = this.onCompleteAllItemChanged.bind(this)
     this.onClearAllItemsChanged = this.onClearAllItemsChanged.bind(this)
+    this.onEditItem = this.onEditItem.bind(this)
     this.state = {
       data: defaultData
     }
@@ -64,7 +65,7 @@ export default class App extends React.Component {
       }
     })
   }
-  //chebge checked state
+  //change checked state
   onItemChanged(changedItem) {
     const changeItems = this.state.data.items.map(item => {
       if (item.index === changedItem.index) {
@@ -118,6 +119,23 @@ export default class App extends React.Component {
     }
   }
 
+  // editing
+  onEditItem(newLabel, checkingItem) {
+    const editedLabel = this.state.data.items.map(item => {
+      if (item.index === checkingItem.index) {
+        item.label = newLabel
+      }
+      return item;
+    })
+
+    this.setState({
+      data: {
+        ...this.state.data,
+        items: editedLabel
+      }
+    })
+  }
+
   render() {
     return (
       <div className="todo-wrapper">
@@ -126,7 +144,7 @@ export default class App extends React.Component {
             <div className="todo-content-inner">
               <ToDoList data={this.state.data} onItemChanged={this.onItemChanged} addItemsChanged={this.addItemsChanged}
                 onDeleteItemChanged={this.onDeleteItemChanged} onCompleteAllItemChanged={this.onCompleteAllItemChanged}
-                onClearAllItemsChanged={this.onClearAllItemsChanged} />
+                onClearAllItemsChanged={this.onClearAllItemsChanged} onEditItem={this.onEditItem} />
               <Footer data={this.state.data} />
             </div>
           </div>

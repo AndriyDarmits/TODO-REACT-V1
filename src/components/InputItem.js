@@ -56,6 +56,7 @@ export default class InputItem extends Component {
         this.props.onClearAllItemsChanged(this.state.clearAllItems)
     }
 
+
     render() {
         return (
             <div className="todo-naviagtion">
@@ -68,7 +69,6 @@ export default class InputItem extends Component {
                 <div className="btn-container">
                     <button onClick={this.completeAllItems}>Complete all</button>
                     <button onClick={this.removeAllItems}>Clear all</button>
-                    <button onClick={this.submitEdit}>Submit edit</button> {/* //TODO */}
                 </div>
             </div>
         )

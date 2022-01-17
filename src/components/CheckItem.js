@@ -6,9 +6,9 @@ export default class CheckItem extends Component {
         super(props);
         this.onChange = this.onChange.bind(this)
         this.deleteItems = this.deleteItems.bind(this)
-        /*  this.editItem = this.editItem.bind(this) */
+        this.editItem = this.editItem.bind(this)
         this.state = {
-            textDecoration: 'none'
+            textDecoration: 'none',
         }
 
     }
@@ -30,9 +30,18 @@ export default class CheckItem extends Component {
         this.props.onItemChanged(this.props.item)
     }
 
-    /* editItem() {
-        this.props.onEditItem(this.props.item.label)
-    } */
+    // editing
+    editItem() {
+        let newLabel = prompt("Type new label!");
+        if (newLabel === undefined || newLabel === '' || newLabel === null) {
+            return;
+        }
+        if (newLabel.length >= 25) {
+            alert("Item lenght should be less than 25");
+            return;
+        }
+        this.props.onEditItem(newLabel, this.props.item)
+    }
     render() {
 
         return (
@@ -41,9 +50,10 @@ export default class CheckItem extends Component {
                     <input className="custom-checkbox" type="checkbox" name="" id="" checked={this.props.item.checked} onChange={this.onChange} />
                     <label style={{ textDecoration: this.state.textDecoration }}>{this.props.item.label}</label>
                 </div>
+
                 <div className="actions-btn">
                     <span style={{ marginLeft: '10px', cursor: 'pointer' }} onClick={this.deleteItems}>&#128473;</span>
-                    <button onClick={this.editItem}>Edit</button>{/*//TODO */}
+                    <button onClick={this.editItem}>Edit</button>
                 </div>
 
             </div>

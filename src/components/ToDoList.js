@@ -9,6 +9,7 @@ export default class ToDoList extends Component {
         this.onDeleteItemChanged = this.onDeleteItemChanged.bind(this)
         this.onCompleteAllItemChanged = this.onCompleteAllItemChanged.bind(this)
         this.onClearAllItemsChanged = this.onClearAllItemsChanged.bind(this)
+        this.onEditItem = this.onEditItem.bind(this)
     }
 
     onItemChanged(item) {
@@ -29,6 +30,10 @@ export default class ToDoList extends Component {
     onClearAllItemsChanged(clearAllItems) {
         this.props.onClearAllItemsChanged(clearAllItems)
     }
+
+    onEditItem(newLabel, item) {
+        this.props.onEditItem(newLabel, item)
+    }
     render() {
 
         return (
@@ -36,7 +41,7 @@ export default class ToDoList extends Component {
                 <h1>{this.props.data.title}</h1>
                 <CheckList items={this.props.data.items} onItemChanged={this.onItemChanged} addItemsChanged={this.addItemsChanged}
                     onDeleteItemChanged={this.onDeleteItemChanged} onCompleteAllItemChanged={this.onCompleteAllItemChanged}
-                    onClearAllItemsChanged={this.onClearAllItemsChanged} />
+                    onClearAllItemsChanged={this.onClearAllItemsChanged} onEditItem={this.onEditItem} />
             </div>
         )
     }

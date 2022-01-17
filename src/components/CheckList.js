@@ -11,7 +11,7 @@ export default class CheckList extends Component {
         this.onDeleteItemChanged = this.onDeleteItemChanged.bind(this)
         this.onCompleteAllItemChanged = this.onCompleteAllItemChanged.bind(this)
         this.onClearAllItemsChanged = this.onClearAllItemsChanged.bind(this)
-        /* this.onEditItem = this.onEditItem.bind(this) */
+        this.onEditItem = this.onEditItem.bind(this)
     }
 
     onItemChanged(item) {
@@ -37,16 +37,19 @@ export default class CheckList extends Component {
         this.props.onClearAllItemsChanged(clearAllItems)
     }
 
-    /*  onEditItem(item) {
-         console.log(item)
-     } */
+    onEditItem(newLabel, item) {
+        this.props.onEditItem(newLabel, item)
+    }
     render() {
         return (
             <div>
                 <InputItem addItemsChanged={this.addItemsChanged} onCompleteAllItemChanged={this.onCompleteAllItemChanged}
                     onClearAllItemsChanged={this.onClearAllItemsChanged} /* onEditItem={this.onEditItem} */ />
-                {this.props.items.map(item => <CheckItem item={item} onItemChanged={this.onItemChanged}
-                    onDeleteItemChanged={this.onDeleteItemChanged} /* onEditItem={this.onEditItem} */ />)}
+                {this.props.items.length ?
+
+                    this.props.items.map(item => <CheckItem item={item} onItemChanged={this.onItemChanged}
+                        onDeleteItemChanged={this.onDeleteItemChanged} onEditItem={this.onEditItem} />) :
+                    <div style={{ color: 'red' }}>There are no todos...</div>}
             </div>
         )
     }
