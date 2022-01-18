@@ -25,7 +25,6 @@ export default class ToDoList extends Component {
 
     onCompleteAllItemChanged(itemState) {
         this.props.onCompleteAllItemChanged(itemState)
-        console.log('hello')
     }
     onClearAllItemsChanged(clearAllItems) {
         this.props.onClearAllItemsChanged(clearAllItems)

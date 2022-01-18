@@ -78,7 +78,6 @@ export default class App extends React.Component {
     for (let i = 0; i < changeItems.length; i++) {
       if (changeItems[i].checked) {
         changeItems.push(changeItems[i]);
-        console.log(changeItems.findIndex(item => item === changeItems[i]))
         changeItems.splice(changeItems.findIndex(item => item === changeItems[i]), 1);
         break;
       }

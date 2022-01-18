@@ -16,11 +16,9 @@ export default class CheckList extends Component {
 
     onItemChanged(item) {
         this.props.onItemChanged(item)
-        console.log('checkkist')
     }
     addItemsChanged(label) {
         this.props.addItemsChanged(label)
-        console.log("куку")
     }
 
     onDeleteItemChanged(item) {
@@ -28,9 +26,7 @@ export default class CheckList extends Component {
     }
 
     onCompleteAllItemChanged(itemState) {
-        console.log(itemState)
         this.props.onCompleteAllItemChanged(itemState)
-
     }
 
     onClearAllItemsChanged(clearAllItems) {
@@ -44,7 +40,7 @@ export default class CheckList extends Component {
         return (
             <div>
                 <InputItem addItemsChanged={this.addItemsChanged} onCompleteAllItemChanged={this.onCompleteAllItemChanged}
-                    onClearAllItemsChanged={this.onClearAllItemsChanged} /* onEditItem={this.onEditItem} */ />
+                    onClearAllItemsChanged={this.onClearAllItemsChanged} />
                 {this.props.items.length ?
 
                     this.props.items.map(item => <CheckItem item={item} onItemChanged={this.onItemChanged}
