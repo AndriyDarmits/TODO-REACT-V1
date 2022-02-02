@@ -1,6 +1,6 @@
 {
   "homepage": "http://AndriyDarmits.github.io/TODO-REACT-V1",
-  "name": "props-state_practice",
+  "name": "todo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

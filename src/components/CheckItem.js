@@ -7,9 +7,9 @@ export default class CheckItem extends Component {
         this.onChange = this.onChange.bind(this)
         this.deleteItems = this.deleteItems.bind(this)
         this.editItem = this.editItem.bind(this)
-        this.state = {
-            textDecoration: 'none',
-        }
+       /*  this.state = {
+            isChecked: false,
+        } */
 
     }
 
@@ -46,9 +46,9 @@ export default class CheckItem extends Component {
 
         return (
             <div className="todo-item">
-                <div>
+                <div >
                     <input className="custom-checkbox" type="checkbox" name="" id="" checked={this.props.item.checked} onChange={this.onChange} />
-                    <label style={{ textDecoration: this.state.textDecoration }}>{this.props.item.label}</label>
+                    <label style={{ textDecoration: this.props.item.checked? "line-through":"none"}}>{this.props.item.label}</label>
                 </div>
 
                 <div className="actions-btn">
